@@ -16,14 +16,14 @@ function goBack() {
   let prevPage = Number(movieId) - 1;
   if (prevPage === 0) return;
   if (prevPage === MISSING_MOVIE) prevPage--;
-  router.push(`/asientos/${prevPage === DUMMY_MOVIE ? prevPage - 1: prevPage}`)
+  router.go(`/asientos/${prevPage === DUMMY_MOVIE ? prevPage - 1: prevPage}`)
 }
 
 function goNext() {
   let nextPage = Number(movieId) + 1;
   if (nextPage === TOTAL_MOVIES + 1) return;
   if (nextPage === MISSING_MOVIE) nextPage++;
-  router.push(`/asientos/${nextPage === DUMMY_MOVIE ? nextPage + 1: nextPage}`)
+  router.go(`/asientos/${nextPage === DUMMY_MOVIE ? nextPage + 1: nextPage}`)
 }
 function handleKeydown(e) {
   if (e.keyCode === 37) goBack();
