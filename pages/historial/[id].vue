@@ -9,7 +9,7 @@ const { data: historial } = await useAsyncData('historialUnico', async () => {
 </script>
 
 <template>
-  <div>
+  <div class="h-screen">
     <div class="flex items-center ml-7 mt-8">
       <div class="i-mdi-receipt-text scale-300 mr-6"></div>
       <span class="font-bold text-4xl">Recibo</span>
