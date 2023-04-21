@@ -5,7 +5,9 @@ import { presetDaisy } from 'unocss-preset-daisy'
 export default defineConfig({
   presets: [
     presetWind(),
-    presetDaisy(),
+    presetDaisy({
+      themes: false
+    }),
     presetIcons(
       {
         extraProperties: {

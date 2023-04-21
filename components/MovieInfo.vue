@@ -19,9 +19,11 @@ const videoUrl = computed(() => props.movie.video.replace("watch?v=", "embed/"))
       <h1 class="text-3xl font-bold my-4 text-center">Synopsis</h1>
       <p>{{ movie.synopsis }}</p>
     </div>
-    <div>
+    <div class="flex flex-col justify-center">
       <h1 class="font-bold text-3xl text-center">Mira el trailer</h1>
-      <iframe width="400" height="315" class="mt-4" :src="videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+      <div class="flex justify-center">
+        <iframe width="300" height="315" class="mt-4 block text-center" :src="videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </template>
