@@ -21,6 +21,11 @@ async function saveSeat(seat) {
     .eq("id", seat.id);
 }
 
+async function resetSeats() {
+  for (const seat of seats.value) {
+    await supabase.from('seats').update({ busy: false }).eq('id', seat.id);
+  }
+}
 
 onMounted(() => {
   realtimeChannel = supabase
@@ -48,7 +53,6 @@ onUnmounted(() => {
         <p class="font-bold text-2xl">Asientos para la pelicula</p>
       </div>
       <div class="grid grid-cols-5 gap-5 p-5">
-        
         <div
           @click="saveSeat(seat)"
           :class="{ busy: seat.busy }"
@@ -59,6 +63,9 @@ onUnmounted(() => {
           <div :class="seat.busy ? 'i-mdi:do-not-disturb' : 'i-mdi-seat' "/>
           <div>{{ seat.id }}</div>
         </div>
+      </div>
+      <div class="flex justify-center">
+        <button @click="resetSeats" class="btn btn-success">Resetear asientos</button>
       </div>
     </div>
   </div>
