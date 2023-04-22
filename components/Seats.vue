@@ -27,6 +27,12 @@ async function resetSeats() {
   }
 }
 
+async function setAllSeats() {
+  for (const seat of seats.value) {
+    await supabase.from('seats').update({ busy: true }).eq('id', seat.id);
+  }
+}
+
 onMounted(() => {
   realtimeChannel = supabase
   .channel("any")
@@ -64,8 +70,9 @@ onUnmounted(() => {
           <div>{{ seat.id }}</div>
         </div>
       </div>
-      <div class="flex justify-center">
+      <div class="flex justify-center gap-4">
         <button @click="resetSeats" class="btn btn-success">Resetear asientos</button>
+        <button @click="setAllSeats" class="btn btn-info">Setear asientos</button>
       </div>
     </div>
   </div>
